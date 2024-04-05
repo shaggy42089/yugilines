@@ -4,24 +4,25 @@ import StatusBar from '../StatusBar.vue';
 </script>
 
 <template>
-    <StatusBar
+    <!-- <StatusBar
       :cards="cards"
       :pool="pool"
       :lines="lines"
-    />
+    />-->
     <div class="main">
       <Card v-for="card in cards.slice(0,1000)"
         :card="card"
       />
-    </div>        
+    </div>         
+    yeet
 </template>
 
 <script>
 export default {
     props : {
         cards : Array,
-        lines : Array,
-        pool  : Array,
+    //     lines : Array,
+    //     pool  : Array,
     }
 }
 </script>
