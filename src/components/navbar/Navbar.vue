@@ -1,10 +1,10 @@
 <template>
 <div class="nav-wrapper">
     <div class="nav">
-        <div>
-            <span class="nav-item">Pool</span>
-            <span class="nav-item">Lines</span>
-            <span class="nav-item">Search</span>
+        <div>    
+            <RouterLink :to="{name:'pool'}" class="nav-item">Pool</RouterLink>
+            <RouterLink :to="{name:'lines'}" class="nav-item">Lines</RouterLink>
+            <RouterLink :to="{name:'menu'}" class="nav-item">Search</RouterLink>
         </div>
         <div>
             <span class="nav-item">YuGiLines</span>
@@ -27,13 +27,6 @@ export default {
             // console.log(await axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.phps'))
         }
     },
-    computed: {
-        cards () {
-            let toto = 1;
-            console.log(toto)
-            return toto;
-        }
-    },
 }
 </script>
 
@@ -44,17 +37,23 @@ export default {
         justify-content: space-between;
         font-size: large;
         height: 100%;
+        align-items: center;
+        z-index: 99;
     }
 
     .nav div {
         height: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
     }
 
     .nav-item {
-        display: inline-block;
+        display: inline-flex;
         cursor: pointer;
-        min-height: 100%;
-        padding: 20px 20px;
+        align-items: center;
+        padding: 0 20px;
+        height: var(--navbar-height);
     }
 
     .nav-item:hover{
@@ -67,9 +66,10 @@ export default {
         padding: 0px 50px;
         position: fixed;
         width: 100%;
+        height: var(--navbar-height);
     }
 
-    .download-link {
+    .download-link, .nav-item {
         text-decoration: none;
         color: var(--color-text);
     }

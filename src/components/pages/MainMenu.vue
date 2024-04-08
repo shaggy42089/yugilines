@@ -1,28 +1,16 @@
 <script setup>
+import { useCardsStore } from '@/stores/cards';
 import Card from '../Card.vue';
 import StatusBar from '../StatusBar.vue';
+
+const cards = useCardsStore();
 </script>
 
 <template>
-    <!-- <StatusBar
-      :cards="cards"
-      :pool="pool"
-      :lines="lines"
-    />-->
+    <StatusBar />
     <div class="main">
-      <Card v-for="card in cards.slice(0,1000)"
+      <Card v-for="card in cards.items.slice(0,100)"
         :card="card"
       />
     </div>         
-    yeet
 </template>
-
-<script>
-export default {
-    props : {
-        cards : Array,
-    //     lines : Array,
-    //     pool  : Array,
-    }
-}
-</script>

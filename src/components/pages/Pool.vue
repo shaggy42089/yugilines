@@ -1,23 +1,19 @@
 <script setup>
-import Card from '../Card.vue';
+import Card from '/src/components/Card.vue';
+import { useCardsStore } from '@/stores/cards';
+import { usePoolStore } from '@/stores/pool';
+
+const cards = useCardsStore();
+const pool = usePoolStore();
 </script>
 
 <template>
     <div class="main">
-      <Card v-for="item of pool"
-        :card="cards.find(c => c.id === item)"
+      <Card v-for="item of pool.items"
+        :card="cards.items.find(c => c.id === item)"
       />
     </div>        
 </template>
-
-<script>
-export default {
-    props : {
-        pool  : Array,
-        cards : Array,
-    }
-}
-</script>
 
 <style scoped>
     .main {
