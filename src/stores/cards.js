@@ -12,8 +12,18 @@ export const useCardsStore = defineStore('cards', {
         // => returns cards that have type='magic' and subtype='equipment'
         filter(filters) {
             return this.items.filter((i) => {
-                return Object.keys(filters).every(f => i[f] === filters[f]);
+                let accumulator = true;
+                Object.keys(filters).forEach(f => {
+                    if (f === 'name') accumulator &= (i.name.toUpperCase().includes(filters[f].toUpperCase()));
+                    else if (f === 'id') accumulator &= (i.id.toString().includes(filters[f]));
+                    else if (f === 'type') accumulator &= (filters[f].map(p => p.toUpperCase()).includes(i.type.toUpperCase()));
+                     else accumulator &= (i[f] === filters[f]);
+                })
+                return accumulator;
             })
-        } 
+        },
+        getById(id) {
+            return this.items.find(c => c.id === id);
+        }
     }
 })
