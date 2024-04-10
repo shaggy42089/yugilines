@@ -24,7 +24,8 @@ const pool = usePoolStore();
 
   .statusbar-superwrapper {
     padding: 0 50px;
-    padding-top: 150px;
+    padding-top: 100px;
+    padding-bottom: 20px;
     display: flex;
     justify-content: center;
   }
