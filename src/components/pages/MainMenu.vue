@@ -4,7 +4,26 @@ import StatusBar from '../StatusBar.vue';
 import { useCardsStore } from '@/stores/cards';
 import { ref } from 'vue';
 import Checkbox from '../ui/Checkbox.vue';
-const allTypes = ['Spell Card', 'Trap Card', 'Normal Monster', 'Effect Monster', 'Fusion Monster', 'Synchro Monster', 'XYZ Monster', 'Ritual Monster', 'Pendulum Normal Monster', 'Pendulum Effect Monster', 'Synchro Pendulum Effect Monster', 'XYZ Pendulum Effect Monster'];
+const allTypes = [
+  [
+    'Spell Card',
+    'Trap Card'
+  ],
+  [
+    'Normal Monster',
+    'Effect Monster',
+    'Fusion Monster',
+    'Synchro Monster',
+    'XYZ Monster',
+    'Ritual Monster'
+  ],
+  [
+    'Pendulum Normal Monster',
+    'Pendulum Effect Monster',
+    'Synchro Pendulum Effect Monster',
+    'XYZ Pendulum Effect Monster'
+  ]
+];
 const cards = useCardsStore();
 let filteredCards = ref(cards.items);
 const search = ref('');
@@ -34,10 +53,12 @@ const filterCards = () => {
       <span class="result-nb">results : {{ filteredCards.length }}</span>
     </div>
     <div class="types">
-      <template v-for="selectedType in allTypes" :key="selectedType">
-        <Checkbox :label="selectedType" v-model="cardTypes" :value="selectedType"
-        @change="(n) => {cardTypes=n; filterCards()}"/>
-      </template>
+      <div class="type-category" v-for="(category, index) in allTypes" :key="index">
+        <template v-for="selectedType in category" :key="selectedType">
+          <Checkbox :label="selectedType" v-model="cardTypes" :value="selectedType"
+          @change="(n) => {cardTypes=n; filterCards()}"/>
+        </template>
+      </div>
     </div>
     <div class="main">
       <Card v-for="card in filteredCards.slice(0,50)"
@@ -62,11 +83,13 @@ export default {
   .result-nb {
     position: absolute;
     color: black;
-    right: 20%;
+    right: 5%;
+    bottom: 15px;
   }
 
   .search-box {
-    width: 80%;
+    position: relative;
+    width: 90%;
     margin-left: auto;
     margin-right: auto;
   }
@@ -75,11 +98,21 @@ export default {
     font-size: larger;
     border-radius: 5px;
     width: 100%;
+    height:52px;
+    padding: 10px;
   }
   .types {
-    margin: 10px 30px;
+    margin: 20px 30px;
+    padding: 0 20px;
     display: flex;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-between;
     flex-wrap: wrap;
+  }
+
+  .type-category {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
   }
 </style>

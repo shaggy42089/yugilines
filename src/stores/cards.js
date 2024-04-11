@@ -11,7 +11,6 @@ export const useCardsStore = defineStore('cards', {
         // ex : filter = {type: 'magic', subtype:'equipment'} 
         // => returns cards that have type='magic' and subtype='equipment'
         filter(filters) {
-            console.log(filters)
             return this.items.filter((i) => {
                 let accumulator = true;
                 Object.keys(filters).forEach(f => {
