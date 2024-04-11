@@ -1,5 +1,5 @@
 <template>
-    <label class="wrapper flex items-center">
+    <label class="wrapper">
       {{label}}
       <input class="checkbox" type="checkbox" :checked="isChecked" :value="value" @change="updateInput"/>
       <span class="checkmark"></span>
@@ -8,6 +8,7 @@
   
   <script>
   export default {
+    emits: ['change', 'val-change'],
     model: {
       prop: 'modelValue',
       event: 'change'
@@ -38,10 +39,8 @@
           } else {
             newValue.splice(newValue.indexOf(this.value), 1)
           }
-          this.$emit('val-change', newValue)
           this.$emit('change', newValue)
         } else {
-          this.$emit('val-change', isChecked ? this.trueValue : this.falseValue)
           this.$emit('change', isChecked ? this.trueValue : this.falseValue)
         }
       }
@@ -54,7 +53,8 @@
   .wrapper {
     display: block;
     position: relative;
-    padding-left: 35px;
+    padding-left: 25px;
+    margin-left: 10px;
     margin-bottom: 6px;
     cursor: pointer;
     font-size: 22px;

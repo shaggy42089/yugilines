@@ -4,7 +4,7 @@ import StatusBar from '../StatusBar.vue';
 import { useCardsStore } from '@/stores/cards';
 import { ref } from 'vue';
 import Checkbox from '../ui/Checkbox.vue';
-const allTypes = ['Spell Card', 'Trap Card'];
+const allTypes = ['Spell Card', 'Trap Card', 'Normal Monster', 'Effect Monster', 'Fusion Monster', 'Synchro Monster', 'XYZ Monster', 'Ritual Monster', 'Pendulum Normal Monster', 'Pendulum Effect Monster', 'Synchro Pendulum Effect Monster', 'XYZ Pendulum Effect Monster'];
 const cards = useCardsStore();
 let filteredCards = ref(cards.items);
 const search = ref('');
@@ -33,10 +33,10 @@ const filterCards = () => {
       @keyup.enter="filterCards" v-model="search" />
       <span class="result-nb">results : {{ filteredCards.length }}</span>
     </div>
-    <div class="types checkbox-wrapper">
+    <div class="types">
       <template v-for="selectedType in allTypes" :key="selectedType">
-        <Checkbox :label="selectedType" v-model="cardTypes" 
-        @val-change="filterCards()"/>
+        <Checkbox :label="selectedType" v-model="cardTypes" :value="selectedType"
+        @change="(n) => {cardTypes=n; filterCards()}"/>
       </template>
     </div>
     <div class="main">
@@ -77,7 +77,9 @@ export default {
     width: 100%;
   }
   .types {
+    margin: 10px 30px;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
   }
 </style>
