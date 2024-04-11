@@ -28,11 +28,17 @@ const cards = useCardsStore();
 let filteredCards = ref(cards.items);
 const search = ref('');
 const cardTypes = ref([]);
+
+const selectedCard = ref(0);
+const selectCard = (id) => {
+  selectedCard.value = id;
+}
+
 const filterCards = () => {
   const filter = {
     
   }
-
+  
   if (!isNaN(search.value) && search.value) {
     filter.id = parseInt(search.value);
   } else if (search.value) {
@@ -46,31 +52,37 @@ const filterCards = () => {
 </script>
 
 <template>
-    <StatusBar />
-    <div class="search-box">
-      <input type="text" class="search-bar" placeholder="card name" maxlength="20"
-      @keyup.enter="filterCards" v-model="search" />
-      <span class="result-nb">results : {{ filteredCards.length }}</span>
+  <StatusBar />
+  <div class="search-box">
+    <input type="text" class="search-bar" placeholder="card name" maxlength="20"
+    @keyup.enter="filterCards" v-model="search" />
+    <span class="result-nb">results : {{ filteredCards.length }}</span>
+  </div>
+  <div class="types">
+    <div class="type-category" v-for="(category, index) in allTypes" :key="index">
+      <template v-for="selectedType in category" :key="selectedType">
+        <Checkbox :label="selectedType" v-model="cardTypes" :value="selectedType"
+        @change="(n) => {cardTypes=n; filterCards()}"/>
+      </template>
     </div>
-    <div class="types">
-      <div class="type-category" v-for="(category, index) in allTypes" :key="index">
-        <template v-for="selectedType in category" :key="selectedType">
-          <Checkbox :label="selectedType" v-model="cardTypes" :value="selectedType"
-          @change="(n) => {cardTypes=n; filterCards()}"/>
-        </template>
-      </div>
-    </div>
-    <div class="main">
-      <Card v-for="card in filteredCards.slice(0,50)"
-        :card="card" :key="card.id"
-      />
-    </div>         
+  </div>
+  <div class="main">
+    <template v-for="card in filteredCards.slice(0,50)" :key="card.id">
+      <Card
+        :card="card"
+        @click="() => selectCard(card.id)"
+        :class="{selected : selectedCard === card.id}"
+        />
+    </template>
+  </div>         
 </template>
 
 <script>
 export default {
-  setup() {
+  setup() {    
     return {
+      selectCard,
+      selectedCard,
       filteredCards,
       search,
       cardTypes,
@@ -114,5 +126,23 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: left;
+  }
+
+  .card-wrapper.selected {
+    position:relative;
+    transition: opacity 0.2s ease-out 0s;
+    opacity: 50%;
+    transform: scale(0.95);
+    transition: 0.15s all ease;
+  }
+
+  .card-menu {
+    position:absolute;
+    bottom: 0;
+    left: 0;
+  }
+
+  .card-menu-item {
+    background-color: white;
   }
 </style>

@@ -38,7 +38,6 @@ export default {
         font-size: large;
         height: 100%;
         align-items: center;
-        z-index: 99;
     }
 
     .nav div {
@@ -67,6 +66,7 @@ export default {
         position: fixed;
         width: 100%;
         height: var(--navbar-height);
+        z-index: 99;
     }
 
     .download-link, .nav-item {

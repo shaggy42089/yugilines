@@ -3,12 +3,16 @@
         <img 
             :src="card.card_images[0].image_url_small" 
             :alt="card.name"
-            @click="$emit('CardClick', card.id)"
         >
+        <!-- <div class="card-menu">
+            <span class="card-menu-item">hello</span>
+        </div> -->
     </div>
 </template>
 
 <script>
+// console.log(this.$refs)
+//v-if="$refs['card-' + card.id].$el.classList.contains('selected')
 export default {
     props : {
         card : Object,
