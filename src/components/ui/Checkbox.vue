@@ -54,7 +54,6 @@
     display: block;
     position: relative;
     padding-left: 25px;
-    margin-left: 10px;
     margin-bottom: 6px;
     cursor: pointer;
     font-size: 22px;

@@ -72,6 +72,11 @@ const filterCards = () => {
         :card="card"
         @click="() => selectCard(card.id)"
         :class="{selected : selectedCard === card.id}"
+        :options="[
+          {'name' : 'View details', 'func' : console.log}, 
+          {'name' : 'Add to deck', 'func' : console.log}, 
+          {'name' : 'Mark as favorite', 'func' : console.log}
+        ]"
         />
     </template>
   </div>         
@@ -114,8 +119,10 @@ export default {
     padding: 10px;
   }
   .types {
-    margin: 20px 30px;
-    padding: 0 20px;
+    margin: 20px 0;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -140,9 +147,5 @@ export default {
     position:absolute;
     bottom: 0;
     left: 0;
-  }
-
-  .card-menu-item {
-    background-color: white;
   }
 </style>

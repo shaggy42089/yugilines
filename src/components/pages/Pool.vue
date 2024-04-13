@@ -9,14 +9,31 @@ const pool = usePoolStore();
 
 <template>
     <div class="main">
-      <Card v-for="item of pool.items"
-        :card="cards.items.find(c => c.id === item)"
-      />
+      <div v-for="item of pool.items" :key="item.name">
+        <div class="deck-name">{{ item.name }}</div>
+        <div class="card-list">
+          <Card v-for="(card, index) in item.cards" :key="index"
+            :card="cards.items.find(c => c.id === card)"
+          />
+        </div>
+      </div>
     </div>        
 </template>
 
 <style scoped>
     .main {
         padding-top: 200px;
+    }
+
+    .deck-name {
+      font-size: x-large;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .card-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
     }
 </style>
