@@ -8,14 +8,17 @@ import NotFound from './components/pages/NotFound.vue'
 import Lines from './components/pages/Lines.vue'
 import Pool from './components/pages/Pool.vue'
 import StatusBar from './components/StatusBar.vue'
+import CardDetails from './components/pages/CardDetails.vue'
 import { createPinia } from 'pinia'
 
+
 const routes = [
-    {path: '/pool', name:'pool', component: Pool},
-    {path: '/lines', name:'lines', component: Lines},
-    {path: '/home', name:'menu',component: MainMenu},
-    {path: '', name:'landingPage',component: StatusBar},
-    {path: '/:pathMatch(.*)*', name:'notFound',component: NotFound},
+    { path: '/pool', name: 'pool', component: Pool },
+    { path: '/lines', name: 'lines', component: Lines },
+    { path: '/home', name: 'menu', component: MainMenu },
+    { path: '/cardDetails/:id', name: 'cardDetails', component: CardDetails, props: true},
+    { path: '', name: 'landingPage', component: StatusBar },
+    { path: '/:pathMatch(.*)*', name: 'notFound', component: NotFound },
 ]
 
 const router = createRouter({
@@ -24,6 +27,6 @@ const router = createRouter({
 })
 const pinia = createPinia()
 createApp(App)
-.use(router)
-.use(pinia)
-.mount('#app')
+    .use(router)
+    .use(pinia)
+    .mount('#app')

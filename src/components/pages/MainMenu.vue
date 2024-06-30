@@ -73,7 +73,7 @@ const filterCards = () => {
         @click="() => selectCard(card.id)"
         :class="{selected : selectedCard === card.id}"
         :options="[
-          {'name' : 'View details', 'func' : console.log}, 
+          {'name' : 'View details', 'func' : (card) => {$router.push(`/cardDetails/${card.id}`)}}, 
           {'name' : 'Add to deck', 'func' : console.log}, 
           {'name' : 'Mark as favorite', 'func' : console.log}
         ]"
