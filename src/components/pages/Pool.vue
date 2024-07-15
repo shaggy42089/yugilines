@@ -1,5 +1,6 @@
 <script setup>
 import Card from '/src/components/Card.vue';
+import CreateDeck from '/src/components/ui/CreateDeck.vue'
 import { useCardsStore } from '@/stores/cards';
 import { usePoolStore } from '@/stores/pool';
 
@@ -17,7 +18,8 @@ const pool = usePoolStore();
           />
         </div>
       </div>
-    </div>        
+    </div>
+    <CreateDeck/>
 </template>
 
 <style scoped>
