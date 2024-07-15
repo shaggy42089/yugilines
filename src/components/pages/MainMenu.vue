@@ -2,6 +2,7 @@
 import Card from '../Card.vue';
 import StatusBar from '../StatusBar.vue';
 import { useCardsStore } from '@/stores/cards';
+import { usePoolStore } from '@/stores/pool';
 import { ref } from 'vue';
 import Checkbox from '../ui/Checkbox.vue';
 const allTypes = [
@@ -25,6 +26,7 @@ const allTypes = [
   ]
 ];
 const cards = useCardsStore();
+const pools = usePoolStore();
 let filteredCards = ref(cards.items);
 const search = ref('');
 const cardTypes = ref([]);
@@ -74,7 +76,7 @@ const filterCards = () => {
         :class="{selected : selectedCard === card.id}"
         :options="[
           {'name' : 'View details', 'func' : (card) => {$router.push(`/cardDetails/${card.id}`)}}, 
-          {'name' : 'Add to deck', 'func' : console.log}, 
+          {'name' : 'Add to deck', 'choices' : pools.items.map(p => p.name), 'func' : pools.addCard}, 
           {'name' : 'Mark as favorite', 'func' : console.log}
         ]"
         />
@@ -96,7 +98,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="css" scoped>
   .result-nb {
     position: absolute;
     color: black;
@@ -134,15 +136,6 @@ export default {
     flex-direction: column;
     justify-content: left;
   }
-
-  .card-wrapper.selected {
-    position:relative;
-    transition: opacity 0.2s ease-out 0s;
-    opacity: 50%;
-    transform: scale(0.95);
-    transition: 0.15s all ease;
-  }
-
   .card-menu {
     position:absolute;
     bottom: 0;

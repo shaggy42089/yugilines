@@ -25,9 +25,9 @@ export default {
     background-color: black;
     color: white;
     position: fixed;
-    bottom: 50px;
-    left: 50vw;
-    transform: translateX(-50%);
+    bottom: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     border-radius: 15px;
     cursor: pointer;
     padding: 10px 25px;
