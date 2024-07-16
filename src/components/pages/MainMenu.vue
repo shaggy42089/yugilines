@@ -5,6 +5,7 @@ import { useCardsStore } from '@/stores/cards';
 import { usePoolStore } from '@/stores/pool';
 import { ref } from 'vue';
 import Checkbox from '../ui/Checkbox.vue';
+import SearchCardOverlay from '../ui/SearchCardOverlay.vue';
 const allTypes = [
   [
     'Spell Card',
@@ -74,12 +75,11 @@ const filterCards = () => {
         :card="card"
         @click="() => selectCard(card.id)"
         :class="{selected : selectedCard === card.id}"
-        :options="[
-          {'name' : 'View details', 'func' : (card) => {$router.push(`/cardDetails/${card.id}`)}}, 
-          {'name' : 'Add to deck', 'choices' : pools.items.map(p => p.name), 'func' : pools.addCard}, 
-          {'name' : 'Mark as favorite', 'func' : console.log}
-        ]"
+      >
+        <SearchCardOverlay
+          :card="card"
         />
+      </Card>
     </template>
   </div>         
 </template>
