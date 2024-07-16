@@ -21,16 +21,12 @@ export default {
     }
 
     .card-wrapper {
+        position: relative;
         display: inline;
         padding: 10px; 
     }
-
-    .card-wrapper.selected {
-        position: relative;
-    }
     
     .card-wrapper.selected img{
-        position:relative;
         transition: opacity 0.2s ease-out 0s;
         opacity: 50%;
         transform: scale(0.95);

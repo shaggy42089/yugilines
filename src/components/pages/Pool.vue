@@ -1,6 +1,7 @@
 <script setup>
 import Card from '/src/components/Card.vue';
 import CreateDeck from '/src/components/ui/CreateDeck.vue'
+import PoolCardOverlay from '../ui/PoolCardOverlay.vue';
 import { useCardsStore } from '@/stores/cards';
 import { usePoolStore } from '@/stores/pool';
 
@@ -15,7 +16,12 @@ const pool = usePoolStore();
         <div class="card-list">
           <Card v-for="(card, index) in item.cards" :key="index"
             :card="cards.items.find(c => c.id === card)"
-          />
+          >
+            <PoolCardOverlay
+              :card="card"
+              :poolId="item.name"
+            />
+          </Card>
         </div>
       </div>
     </div>

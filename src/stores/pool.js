@@ -23,10 +23,10 @@ export const usePoolStore = defineStore('pool', {
         addCard(card, poolId) {
             const pool = this.items.find((p) => p.name === poolId);
             if (!pool) return;
-            pool.cards.push(card.id);
+            pool.cards.push(card);
             toast.success(`card succesfully added to deck`)
         },
-        removeCard(poolId, card) {
+        removeCard(card, poolId) {
             const pool = this.items.find((p) => p.name === poolId);
             if (!pool) return;
             const index = pool.cards.indexOf(card);

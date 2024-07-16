@@ -11,8 +11,16 @@ import StatusBar from './components/StatusBar.vue'
 import CardDetails from './components/pages/CardDetails.vue'
 import Toast from "vue-toastification";
 import "vue-toastification/dist/index.css";
+import { OhVueIcon, addIcons } from "oh-vue-icons";
+import { FaRegularTrashAlt, HiSolidPlusCircle, HiSolidMinusCircle, BiCircleFill } from "oh-vue-icons/icons";
 import { createPinia } from 'pinia'
 
+addIcons(
+    FaRegularTrashAlt,
+    HiSolidPlusCircle,
+    HiSolidMinusCircle,
+    BiCircleFill,
+);
 
 const routes = [
     { path: '/pool', name: 'pool', component: Pool },
@@ -37,4 +45,5 @@ createApp(App)
     .use(router)
     .use(pinia)
     .use(Toast, toastOptions)
+    .component("v-icon", OhVueIcon)
     .mount('#app')
