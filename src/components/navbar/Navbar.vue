@@ -7,7 +7,7 @@
             <RouterLink :to="{name:'menu'}" class="nav-item">Search</RouterLink>
         </div>
         <div>
-            <span class="nav-item">YuGiLines</span>
+            <RouterLink :to="{name:'landingPage'}" class="nav-item">YuGiLines</RouterLink>
         </div>
         <div>
             <span class="nav-item" @click="save">Save</span>

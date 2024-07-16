@@ -15,7 +15,7 @@ export default {
     },
 }
 </script>
-<style lang="css" scoped>
+<style lang="scss">
     img {
         width : 180px;
     }
@@ -31,5 +31,15 @@ export default {
         opacity: 50%;
         transform: scale(0.95);
         transition: 0.15s all ease;
+    }
+
+    .card-menu {
+        position: absolute;
+        top:50%;
+        left:50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: 100%;
+        z-index: 50;
     }
 </style>

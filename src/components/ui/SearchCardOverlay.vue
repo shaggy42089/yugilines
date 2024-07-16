@@ -1,7 +1,7 @@
 <template>
     <div class="card-menu">
             <span 
-                class="card-menu-item"
+                class="card-menu-item pointer"
                 @mouseover="selectOption(opt)"
                 @click="opt?.choices?.length ? undefined : opt.func(card)"
                 v-for="opt in options" 
@@ -12,7 +12,7 @@
                     v-if="opt.name === selectedChoice">
                     <span class="card-menu-subitem"
                         v-for="choice in opt.choices"
-                        @click="opt.func(card, choice)"
+                        @click="opt.func(card.id, choice)"
                         :key="choice"
                         >
                         {{ choice }}
@@ -37,7 +37,7 @@ export default {
     computed: {
         options () {
             return [
-                {'name' : 'View details', 'func' : (card) => {$router.push(`/cardDetails/${card.id}`)}}, 
+                {'name' : 'View details', 'func' : (card) => {this.$router.push(`/cardDetails/${card.id}`)}}, 
                 {'name' : 'Add to deck', 'choices' : this.pools.items.map(p => p.name), 'func' : this.pools.addCard}, 
                 {'name' : 'Mark as favorite', 'func' : console.log}
             ]
@@ -54,18 +54,19 @@ export default {
 }
 </script>
 
-<style scoped>
-.card-wrapper:not(.selected) .card-menu {
-        display: none;
-    }
-
-    .card-wrapper.selected .card-menu {
-        display: block;
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        left: 20%;
-        width:60%;
+<style lang="scss" scoped>
+    .card-wrapper {
+        &:not(.selected) .card-menu {
+            display: none;
+        }
+        &.selected .card-menu {
+            display: flex;
+        }
+        & .card-menu {
+            flex-direction: column;
+            justify-content: center;
+            padding: 0px 30px;
+        }
     }
 
     .card-menu-item {
@@ -75,8 +76,11 @@ export default {
         background-color: gray;
         color: white;
         text-align: center;
-        cursor:pointer;
         border: 1px solid transparent;
+     
+        &:hover, .card-menu-subitem:hover{
+            border: 1px solid white;
+        }
     }
 
     .card-menu-subitem-wrapper {
@@ -96,9 +100,5 @@ export default {
         cursor:pointer;
         border: 1px solid transparent;
         margin-bottom: 2px; 
-    }
-
-    .card-menu-item:hover, .card-menu-subitem:hover{
-        border: 1px solid white;
     }
 </style>

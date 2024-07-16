@@ -33,6 +33,7 @@ export default {
     padding: 10px 25px;
     box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.5);
     overflow: auto;
+    z-index: 99;
 
     strong {
         font-size: larger;

@@ -136,9 +136,4 @@ export default {
     flex-direction: column;
     justify-content: left;
   }
-  .card-menu {
-    position:absolute;
-    bottom: 0;
-    left: 0;
-  }
 </style>

@@ -40,15 +40,6 @@ export default {
 
 <style lang="scss" scoped>
 .card-menu {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    display: block;
-    width: 100%;
-    height: 100%;
-}
-
-.card-menu {
     opacity: 0%;
     
     &:hover {
@@ -60,8 +51,10 @@ export default {
     position: absolute;
     display: block;
     top: 50%;
-    transform: translateY(-50%);
-    left: 20%;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    width: 100%;
+    text-align: center;
 }
 
 .qty-btn {

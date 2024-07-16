@@ -11,7 +11,7 @@ const pool = usePoolStore();
 
 <template>
     <div class="main">
-      <div v-for="item of pool.items" :key="item.name">
+      <div class="deck-wrapper" v-for="item of pool.items" :key="item.name">
         <div class="deck-name">{{ item.name }}</div>
         <div class="card-list">
           <Card v-for="(card, index) in item.cards" :key="index"
@@ -31,6 +31,10 @@ const pool = usePoolStore();
 <style scoped>
     .main {
         padding-top: 200px;
+    }
+
+    .deck-wrapper {
+      width: 100%;
     }
 
     .deck-name {
