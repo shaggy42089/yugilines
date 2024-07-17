@@ -64,6 +64,7 @@ export default {
         background-color: black;
         padding: 0px 50px;
         position: fixed;
+        top:0;
         width: 100%;
         height: var(--navbar-height);
         z-index: 99;

@@ -2,11 +2,11 @@
     <div class="card-menu">
         <div class="btn-container">
             <v-icon animation="spin" speed="fast" class="pointer qty-btn" label="delete card from deck" @click="addCardToDeck" hover>
-                <v-icon name="bi-circle-fill" scale="3.0" fill="white"></v-icon>
+                <v-icon name="bi-circle-fill" scale="2.5" fill="white"></v-icon>
                 <v-icon name="hi-solid-plus-circle" scale="3.0" fill="#4ade80"></v-icon>
             </v-icon>
             <v-icon animation="spin" speed="fast" class="pointer qty-btn" label="add card to deck" @click="removeCardFromDeck" hover>
-                <v-icon name="bi-circle-fill" scale="3.0" fill="white"></v-icon>
+                <v-icon name="bi-circle-fill" scale="2.5" fill="white"></v-icon>
                 <v-icon name="hi-solid-minus-circle" scale="3.0" fill="#f87171"></v-icon>
             </v-icon>
         </div>

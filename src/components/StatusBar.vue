@@ -24,7 +24,7 @@ const deck = useDeckStore();
 
   .statusbar-superwrapper {
     padding: 0 50px;
-    padding-top: 100px;
+    padding-top: 20px;
     padding-bottom: 20px;
     display: flex;
     justify-content: center;

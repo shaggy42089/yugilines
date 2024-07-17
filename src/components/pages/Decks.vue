@@ -30,11 +30,8 @@ const deck = useDeckStore();
 </template>
 
 <style scoped>
-    .main {
-        padding-top: 200px;
-    }
-
     .deck-wrapper {
+      margin-top: 40px;
       width: 100%;
     }
 
