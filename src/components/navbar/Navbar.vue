@@ -2,7 +2,7 @@
 <div class="nav-wrapper">
     <div class="nav">
         <div>    
-            <RouterLink :to="{name:'pool'}" class="nav-item">Pool</RouterLink>
+            <RouterLink :to="{name:'decks'}" class="nav-item">Decks</RouterLink>
             <RouterLink :to="{name:'lines'}" class="nav-item">Lines</RouterLink>
             <RouterLink :to="{name:'menu'}" class="nav-item">Search</RouterLink>
         </div>
@@ -11,7 +11,7 @@
         </div>
         <div>
             <span class="nav-item" @click="save">Save</span>
-            <a class="nav-item download-link" href="/src/assets/json/pool.json">get pool</a>
+            <a class="nav-item download-link" href="/src/assets/json/pool.json">get decks</a>
             <a class="nav-item download-link" href="/src/assets/json/lines.json">get lines</a>
         </div>
     </div>

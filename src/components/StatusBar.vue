@@ -1,17 +1,17 @@
 <script setup>
 import { useCardsStore } from '@/stores/cards';
 import { useLinesStore } from '@/stores/lines';
-import { usePoolStore } from '@/stores/pool';
+import { useDeckStore } from '@/stores/decks';
 
 const cards = useCardsStore();
 const lines = useLinesStore();
-const pool = usePoolStore();
+const deck = useDeckStore();
 </script>
 
 <template>
     <div class="statusbar-superwrapper">
         <div class="statusbar-wrapper">
-            <div>Cards in pool : {{ pool.items.length }}</div>
+            <div>Cards in deck : {{ deck.items.length }}</div>
             <div>Cards loaded : {{ cards.items.length }}</div>
             <div>Lines loaded : {{ lines.items.length }}</div>
         </div>

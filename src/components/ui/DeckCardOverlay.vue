@@ -14,25 +14,25 @@
 </template>
 
 <script>
-import { usePoolStore } from '@/stores/pool';
+import { useDeckStore } from '@/stores/decks';
 
 export default {
     props: {
         card: Number,
-        poolId: String
+        deckId: String
     },
     computed: {
-        pools() {
-            return usePoolStore();
+        decks() {
+            return useDeckStore();
         }
     },
     methods: {
         addCardToDeck() {
-            this.pools.addCard(this.card, this.poolId);
+            this.decks.addCard(this.card, this.deckId);
         },
 
         removeCardFromDeck() {
-            this.pools.removeCard(this.card, this.poolId);
+            this.decks.removeCard(this.card, this.deckId);
         }
     }
 }

@@ -6,7 +6,7 @@ import { createWebHistory, createRouter } from 'vue-router'
 import MainMenu from './components/pages/MainMenu.vue'
 import NotFound from './components/pages/NotFound.vue'
 import Lines from './components/pages/Lines.vue'
-import Pool from './components/pages/Pool.vue'
+import Decks from './components/pages/Decks.vue'
 import StatusBar from './components/StatusBar.vue'
 import CardDetails from './components/pages/CardDetails.vue'
 import Toast from "vue-toastification";
@@ -23,7 +23,7 @@ addIcons(
 );
 
 const routes = [
-    { path: '/pool', name: 'pool', component: Pool },
+    { path: '/decks', name: 'decks', component: Decks },
     { path: '/lines', name: 'lines', component: Lines },
     { path: '/home', name: 'menu', component: MainMenu },
     { path: '/cardDetails/:id', name: 'cardDetails', component: CardDetails, props: true},

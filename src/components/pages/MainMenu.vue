@@ -2,7 +2,6 @@
 import Card from '../Card.vue';
 import StatusBar from '../StatusBar.vue';
 import { useCardsStore } from '@/stores/cards';
-import { usePoolStore } from '@/stores/pool';
 import { ref } from 'vue';
 import Checkbox from '../ui/Checkbox.vue';
 import SearchCardOverlay from '../ui/SearchCardOverlay.vue';
@@ -27,7 +26,6 @@ const allTypes = [
   ]
 ];
 const cards = useCardsStore();
-const pools = usePoolStore();
 let filteredCards = ref(cards.items);
 const search = ref('');
 const cardTypes = ref([]);

@@ -12,7 +12,8 @@
                     v-if="opt.name === selectedChoice">
                     <span class="card-menu-subitem"
                         v-for="choice in opt.choices"
-                        @click="opt.func(card.id, choice)"
+                        @click="opt.func(card.id
+                        , choice)"
                         :key="choice"
                         >
                         {{ choice }}
@@ -23,7 +24,7 @@
 </template>
 
 <script>
-import { usePoolStore } from '@/stores/pool';
+import { useDeckStore } from '@/stores/decks';
 
 export default {
     props : {
@@ -38,12 +39,12 @@ export default {
         options () {
             return [
                 {'name' : 'View details', 'func' : (card) => {this.$router.push(`/cardDetails/${card.id}`)}}, 
-                {'name' : 'Add to deck', 'choices' : this.pools.items.map(p => p.name), 'func' : this.pools.addCard}, 
+                {'name' : 'Add to deck', 'choices' : this.decks.items.map(p => p.name), 'func' : this.decks.addCard}, 
                 {'name' : 'Mark as favorite', 'func' : console.log}
             ]
         },
-        pools () {
-            return usePoolStore();
+        decks () {
+            return useDeckStore();
         }
     },
     methods : {

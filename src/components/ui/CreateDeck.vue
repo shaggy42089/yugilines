@@ -5,15 +5,15 @@
 </template>
 
 <script>
-import { usePoolStore } from '@/stores/pool';
+import { useDeckStore } from '@/stores/decks';
 
 export default {
     methods : {
         createDeck() {
-            const pool = usePoolStore();
+            const deck = useDeckStore();
             const deckName = prompt('please enter a deck name');
             if (deckName === null) return;
-            pool.addItem({name : deckName, cards : []});
+            deck.createDeck({name : deckName, cards : []});
         }
     }
 }
