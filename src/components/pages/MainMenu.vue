@@ -134,4 +134,10 @@ export default {
     flex-direction: column;
     justify-content: left;
   }
+
+  .main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 </style>

@@ -43,5 +43,20 @@ export const useDeckStore = defineStore('deck', {
             deck.cards.splice(index, 1);
             toast.success(`card succesfully removed from deck`)
         },
+        // get decks with no duplicates
+        refinedDecks() {
+            const tmp = [];
+            this.items.forEach((deck) => {
+                const tmpDeck = [];
+                deck.cards.forEach((c, index, arr) => {
+                    if (deck.cards.indexOf(c) === index) {
+                        tmpDeck.push(c);
+                    }
+                });
+                tmp.push({name: deck.name, cards:[...tmpDeck]})
+            });
+
+            return [...tmp];
+        }
     }
 })

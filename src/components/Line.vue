@@ -88,4 +88,12 @@ export default {
         align-items: start;
         justify-content: center;
     }
+
+    .trash-icon {
+        padding-left: 20px;
+
+        &:hover {
+            opacity: 80%;
+        }
+    }
 </style>

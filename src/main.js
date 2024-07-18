@@ -12,7 +12,14 @@ import CardDetails from './components/pages/CardDetails.vue'
 import Toast from "vue-toastification";
 import "vue-toastification/dist/index.css";
 import { OhVueIcon, addIcons } from "oh-vue-icons";
-import { FaRegularTrashAlt, HiSolidPlusCircle, HiSolidMinusCircle, BiCircleFill } from "oh-vue-icons/icons";
+import { 
+    FaRegularTrashAlt, 
+    HiSolidPlusCircle,
+    HiSolidMinusCircle,
+    BiCircleFill,
+    GiCardDraw,
+    MdClose,
+} from "oh-vue-icons/icons";
 import { createPinia } from 'pinia'
 
 addIcons(
@@ -20,6 +27,8 @@ addIcons(
     HiSolidPlusCircle,
     HiSolidMinusCircle,
     BiCircleFill,
+    GiCardDraw,
+    MdClose,
 );
 
 const routes = [
